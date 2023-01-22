@@ -1,0 +1,57 @@
+% Clear all variables and close figures
+clear all
+close all
+clc
+
+%% Jeux de mots
+
+% Read in audio file and store in variable 'audio'
+[audio, sample_rate] = audioread("C:\Users\zaina\Desktop\MyFile\S'5\Traitement de signal\tp2\Phrase.m4a");
+
+% Play the audio file
+% sound(audio, sample_rate)
+
+% Plot the audio signal
+% plot(audio)
+
+% Play the audio file at different sample rates
+% sound(audio, sample_rate*2)
+% sound(audio, sample_rate/2)
+% sound(audio, sample_rate)
+
+% Plot the audio signal using a stem plot
+stem(audio)
+% Based on the stem plot, the phrase "Rien ne sert de" is contained in the section of the audio signal from index 1025 to 2.05e05
+
+% Extract the phrase "Rien ne sert de" from the audio signal
+phrase_one = audio(1025:(2.05e05));
+% stem(phrase_one)
+% sound(phrase_one, sample_rate)
+
+% Extract other phrases from the audio signal
+phrase_two = audio((2.239e+05):(2.642e+05));
+% sound(phrase_two, sample_rate)
+phrase_three = audio((2.987e+05):(3.81e+05));
+% sound(phrase_three, sample_rate)
+phrase_four = audio((4e+05):(5.28e+05));
+% sound(phrase_four, sample_rate)
+
+% Concatenate the phrases to form a new audio signal
+new_audio = [phrase_one, phrase_four, phrase_three, phrase_two];
+% sound(new_audio, sample_rate)
+
+%% Synthesis and Spectral Analysis of a Musical Scale
+
+% Synthesis of a Musical Scale
+
+% Set the sample rate
+sample_rate = 8192;
+time_step = 1/sample_rate;
+num_samples = 5000;
+time = (0:num_samples-1)*time_step;
+
+% Generate the notes of the scale
+note_one = 10*cos(2*pi*262*time);
+% sound(note_one, sample_rate)
+note_two = 10*cos(2*pi*294*time);
+% sound(note_two, sample_rate)
